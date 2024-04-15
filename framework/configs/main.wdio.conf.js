@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'fs-extra';
-import Logger from "../utils/logger.js";
+import Logger from "../utils/Logger.js";
 
 export const downloadDir = path.resolve('./tmp');
 

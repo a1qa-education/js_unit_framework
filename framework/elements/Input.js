@@ -35,7 +35,7 @@ export class Input extends BaseElement {
         const valueToLog = options.secret ? value.replaceAll(/\S/gm, '*') : value;
         Logger.info(`${this.log()}Type text "${valueToLog}" in element`);
         const element = await this._get$();
-        return element.setValue(value);
+        return element.addValue(value);
     }
 
     async manuallyClearValue() {
