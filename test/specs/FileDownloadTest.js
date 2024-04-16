@@ -8,15 +8,16 @@ import * as path from 'path'
 const fileName = 'test.txt';
 const downloadedFilePath = path.join(downloadDir, fileName);
 
-describe('File Download Test', () => {
-    it('Check that file downloaded', async () => {
+describe('File Download Test', function () {
+    it('Check that file downloaded', async function () {
         await Browser.openUrl('https://the-internet.herokuapp.com/');
-        assert.isTrue(await MainPage.isPageOpened(), 'Main Page is not opened');
-
         await MainPage.clickNavigationLink('File Download');
-        assert.isTrue(await FileDownloaderPage.isPageOpened(), 'File Downloader Page is not opened');
+        assert.isTrue(
+            await FileDownloaderPage.isFileLabelDisplayed(fileName),
+            `File with name ${fileName} does not exist on the page`
+        );
 
         await FileDownloaderPage.downloadFile(fileName);
-        assert.isTrue(await Browser.File.isFileExist(downloadedFilePath), 'File is not downloaded');
+        assert.isTrue(await Browser.File.isFileExist(downloadedFilePath), 'File does not downloaded');
     })
 })

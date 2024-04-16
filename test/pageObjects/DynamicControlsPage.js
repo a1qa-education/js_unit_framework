@@ -19,7 +19,7 @@ class DynamicControlsPage extends BasePage {
     }
 
     async inputTextIntoInputField(text) {
-        await this.inputField.type(text);
+        await this.inputField.typeText(text);
     }
 
     async getText() {

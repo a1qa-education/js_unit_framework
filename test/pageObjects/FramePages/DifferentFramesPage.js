@@ -2,7 +2,7 @@ import BasePage from '../../../framework/page/BasePage.js'
 import { Label, Button } from '../../../framework/elements/index.js'
 import { PreciseTextLocator } from '../../../framework/utils/locatorHelper.js'
 
-class FramesPage extends BasePage {
+class DifferentFramesPage extends BasePage {
     constructor() {
         super(new Label(PreciseTextLocator('Frames')), 'Frames Page');
 
@@ -14,4 +14,4 @@ class FramesPage extends BasePage {
     }
 }
 
-export default new FramesPage();
+export default new DifferentFramesPage();

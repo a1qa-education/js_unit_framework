@@ -24,30 +24,18 @@ export class Input extends BaseElement {
         options.secret = options.secret || false;
         options.clear = options.clear || false;
 
-        if (options.clear) {
-            await this.manuallyClearValue();
-        }
-
         await this.state().waitForExist();
         await this.state().waitForDisplayed();
         await this.state().waitForEnabled();
 
         const valueToLog = options.secret ? value.replaceAll(/\S/gm, '*') : value;
         Logger.info(`${this.log()}Type text "${valueToLog}" in element`);
+
         const element = await this._get$();
+        if (options.clear) {
+            return element.setValue(value);
+        }
         return element.addValue(value);
-    }
-
-    async manuallyClearValue() {
-        Logger.info(`${this.log()}Manually clear value from element`);
-        const keys = [Keys.CONTROL, Keys.LITTLE_A, Keys.DELETE];
-
-        await this.state().waitForExist();
-        await this.state().waitForClickable();
-
-        const element = await this._get$();
-        await element.click();
-        return Browser.pressKeys(keys);
     }
 
     /**
@@ -88,7 +76,7 @@ export class Input extends BaseElement {
 
     /**
      * Get value of the Input element
-     * @returns {Promise<string>} Value
+     * @returns {Promise<string>} Value from element
      */
     async getText() {
         Logger.info(`${this.log()}Get value from element`);

@@ -1,27 +1,28 @@
 import Browser from '../../framework/browser/Browser.js'
 import MainPage from '../pageObjects/MainPage.js'
-import FramesPage from '../pageObjects/FramePages/FramesPage.js'
-import IFramePage from '../pageObjects/FramePages/IFramePage.js'
+import DifferentFramesPage from '../pageObjects/FramePages/DifferentFramesPage.js'
+import TinyEditorPage from '../pageObjects/FramePages/TinyEditorPage.js'
 import {assert} from 'chai'
 
 const defaultInputText = 'Your content goes here.';
 
-describe('iFrame test', () => {
-    it('Interaction with text iFrame', async() => {
+describe('iFrame test', function () {
+    it('Interaction with text iFrame', async function () {
         await Browser.openUrl('https://the-internet.herokuapp.com/');
-        assert.isTrue(await MainPage.isPageOpened(), 'Main Page is not opened');
-
         await MainPage.clickNavigationLink('Frames');
-        assert.isTrue(await FramesPage.isPageOpened(), 'Frames Page is not opened');
 
-        await FramesPage.clickIFrameButton();
-        assert.isTrue(await IFramePage.isPageOpened(), 'iFrame Page is not opened');
+        await DifferentFramesPage.clickIFrameButton();
+
+        const iFrame = TinyEditorPage.iFrame.getPageUniqueElement();
 
         const randomString = crypto.randomUUID();
-        await IFramePage.inputTextIntoTextArea(randomString);
-        assert.strictEqual(await IFramePage.getTextFromInputField(), `${defaultInputText}${randomString}`, 'Wrong message into input field');
+        await Browser.IFrame.switchToFrame(iFrame);
+        await TinyEditorPage.iFrame.inputTextIntoTextArea(randomString);
+        assert.strictEqual(await TinyEditorPage.iFrame.getTextFromInputField(), `${defaultInputText}${randomString}`, 'Wrong message into input field');
 
-        await IFramePage.undoChanges();
-        assert.strictEqual(await IFramePage.getTextFromInputField(), `${defaultInputText}`, 'Wrong message into input field');
+        await Browser.IFrame.switchToParentFrame();
+        await TinyEditorPage.undoChanges();
+        await Browser.IFrame.switchToFrame(iFrame);
+        assert.strictEqual(await TinyEditorPage.iFrame.getTextFromInputField(), `${defaultInputText}`, 'Wrong message into input field');
     })
 })

@@ -6,7 +6,11 @@ class FileDownloaderPage extends BasePage {
     constructor() {
         super(new Label(PreciseTextLocator('File Downloader')), 'File Downloader Page');
 
-        this.fileLabel = (text) => new Label(PreciseTextLocator(text), 'File Label'); 
+        this.fileLabel = (text) => new Label(PreciseTextLocator(text), 'File Label');
+    }
+
+    async isFileLabelDisplayed(fileName) {
+        return await this.fileLabel(fileName).state().isDisplayed();
     }
 
     async downloadFile(fileName) {

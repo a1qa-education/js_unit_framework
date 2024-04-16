@@ -9,5 +9,6 @@ const ElementType = {
     TABLE: 'Table',
     TABLE_ROW: 'Table Row',
     TEXT_BOX: 'Text Box',
+    FILE_UPLOADER: 'File Uploader',
 }
 export default ElementType;
