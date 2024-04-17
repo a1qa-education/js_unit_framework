@@ -8,14 +8,10 @@ class TinyEditorPage extends BasePage {
         super(new Label(PartialTextLocator('An iFrame')), 'iFrame Page');
 
         this.iFrame = IFrame;
-        this.editButton = new Button('//*[text()="Edit"]', 'Edit button');
-        this.undoButton = new Button('//div[@title="Undo"]', 'Undo button');
+        //Implement elements 
     }
 
-    async undoChanges() {
-        await this.editButton.click();
-        await this.undoButton.click();
-    }
+    //Implement methods
 }
 
-export default new TinyEditorPage();
+//Export Page
