@@ -10,14 +10,6 @@ const downloadedFilePath = path.join(downloadDir, fileName);
 
 describe('File Download Test', function () {
     it('Check that file downloaded', async function () {
-        await Browser.openUrl('https://the-internet.herokuapp.com/');
-        await MainPage.clickNavigationLink('File Download');
-        assert.isTrue(
-            await FileDownloaderPage.isFileLabelDisplayed(fileName),
-            `File with name ${fileName} does not exist on the page`
-        );
-
-        await FileDownloaderPage.downloadFile(fileName);
-        assert.isTrue(await Browser.File.isFileExist(downloadedFilePath), 'File does not downloaded');
+        //Implement test case
     })
 })

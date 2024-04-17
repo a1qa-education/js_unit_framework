@@ -10,21 +10,7 @@ class DynamicControlsPage extends BasePage {
         this.inputField = new Input('//input[@type="text"]', 'Input Field');
     }
 
-    async clickEnableButton() {
-        await this.enableButton.click();
-    }
-
-    async isInputFieldEnabled() {
-        return await this.inputField.state().waitForEnabled();
-    }
-
-    async inputTextIntoInputField(text) {
-        await this.inputField.typeText(text);
-    }
-
-    async getText() {
-        return await this.inputField.getText();
-    }
+    //Implement all methods for DynamicControlsTest
 }
 
 export default new DynamicControlsPage();

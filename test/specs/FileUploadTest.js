@@ -8,12 +8,4 @@ import * as path from 'path';
 const fileName = 'test.txt';
 const fullPathToFile = path.resolve(`./upload/${fileName}`);
 
-describe('File Upload Test', function () {
-    it('Check that file uploaded', async function () {
-        await Browser.openUrl('https://the-internet.herokuapp.com/');
-        await MainPage.clickNavigationLink('File Upload');
-
-        await FileUploaderPage.uplaodFile(fullPathToFile);
-        assert.strictEqual(await UploadedFilesPage.getUploadedFilesList(), fileName, 'Incorrest list of uploaded files');
-    })
-})
+//Implement test block 

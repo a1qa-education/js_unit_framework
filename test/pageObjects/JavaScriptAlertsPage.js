@@ -7,8 +7,7 @@ class JavaScriptAlertsPage extends BasePage {
     constructor() {
         super(new Label(PreciseTextLocator('JavaScript Alerts')), 'JavaScript Alerts Page');
 
-        this.forJSAlertButton = new Button('//*[@onclick="jsAlert()"]', 'JS Akert Button');
-        this.resultLabel = new Label('//*[@id="result"]', 'Result Label');
+        //Add elements to interect with
     }
 
     async clickForJSAlertButton() {

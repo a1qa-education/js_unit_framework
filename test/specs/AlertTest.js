@@ -8,11 +8,11 @@ const successfulMessage = 'You successfully clicked an alert';
 describe('Alert Tests', function () {
     it('Interation with JavaScript Alert', async function () {
         await Browser.openUrl('https://the-internet.herokuapp.com/');
-        await MainPage.clickNavigationLink('JavaScript Alerts');
+        //Navigate to 'JavaScript Alerts'
         
         await JavaScriptAlertsPage.clickForJSAlertButton();
         
         await JavaScriptAlertsPage.acceptJSAlert();
-        assert.strictEqual(await JavaScriptAlertsPage.getResultText(), successfulMessage, 'Wrong result of interation with JSAlert');
+        //Add assertion to check successfulMessage
     })
 })

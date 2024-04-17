@@ -16,13 +16,9 @@ describe('iFrame test', function () {
         const iFrame = TinyEditorPage.iFrame.getPageUniqueElement();
 
         const randomString = crypto.randomUUID();
-        await Browser.IFrame.switchToFrame(iFrame);
-        await TinyEditorPage.iFrame.inputTextIntoTextArea(randomString);
-        assert.strictEqual(await TinyEditorPage.iFrame.getTextFromInputField(), `${defaultInputText}${randomString}`, 'Wrong message into input field');
-
-        await Browser.IFrame.switchToParentFrame();
-        await TinyEditorPage.undoChanges();
-        await Browser.IFrame.switchToFrame(iFrame);
+        
+        //Implement missed steps
+        
         assert.strictEqual(await TinyEditorPage.iFrame.getTextFromInputField(), `${defaultInputText}`, 'Wrong message into input field');
     })
 })

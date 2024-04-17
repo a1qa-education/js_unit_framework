@@ -4,14 +4,15 @@ import { PreciseTextLocator } from '../../framework/utils/locatorHelper.js'
 
 class DataTablesPage extends BasePage {
     constructor() {
-        super(new Label(PreciseTextLocator('Data Tables')), 'Data Tables Page');
+        //Change call of supre() constructor to approriate one
+        super();
 
         this.firstExampleTable = new Table('//*[@id="table1"]', 'First Table Example');
     }
 
     async getColumnValues() {
         const table = await this.firstExampleTable.parseTableContent();
-        return table.map(elem => elem.Due);
+        //Return array of Due values
     }
 }
 
