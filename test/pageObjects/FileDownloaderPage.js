@@ -10,7 +10,7 @@ class FileDownloaderPage extends BasePage {
     }
 
     async isFileLabelDisplayed(fileName) {
-        return await this.fileLabel(fileName).state().isDisplayed();
+        return this.fileLabel(fileName).state().isDisplayed();
     }
 
     async downloadFile(fileName) {
